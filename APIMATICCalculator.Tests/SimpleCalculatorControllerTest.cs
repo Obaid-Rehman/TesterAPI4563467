@@ -99,5 +99,36 @@ namespace APIMATICCalculator.Tests
             Assert.IsNotNull(result, "Result should exist");
             Assert.AreEqual(9, result, AssertPrecision, "Response should match expected value");
         }
+
+        /// <summary>
+        /// Check if subtraction works.
+        /// </summary>
+        /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
+        [Test]
+        public async Task TestSubtraction()
+        {
+            // Parameters for the API call
+            var operation = (Standard.Models.OperationTypeEnum)Enum.Parse(typeof(Standard.Models.OperationTypeEnum), "SUBTRACT");
+            var x = 4;
+            var y = 5;
+            Standard.Models.GetCalculateInput input = new Standard.Models.GetCalculateInput(operation, x, y);
+
+            // Perform API call
+            double result = 0;
+            try
+            {
+                result = await this.controller.GetCalculateAsync(input);
+            }
+            catch (ApiException)
+            {
+            }
+
+            // Test response code
+            Assert.AreEqual(200, this.HttpCallBackHandler.Response.StatusCode, "Status should be 200");
+
+            // Test whether the captured response is as we expected
+            Assert.IsNotNull(result, "Result should exist");
+            Assert.AreEqual(-1, result, AssertPrecision, "Response should match expected value");
+        }
     }
 }
