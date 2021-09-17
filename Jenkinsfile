@@ -4,7 +4,6 @@ node {
 
     stage 'Prepare'
         bat 'nuget restore "APIMATICCalculator.sln"'
-        bat 'nuget install NUnit.Runners -Version 3.2.1 -OutputDirectory testrunner'
 
     stage 'Build'
         bat "dotnet build -c Release \"APIMATICCalculator.sln\""
