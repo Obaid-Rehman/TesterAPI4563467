@@ -3,10 +3,10 @@ node {
         checkout scm
 
     stage 'Prepare'
-        bat 'nuget restore "APIMATICCalculator.sln"'
+        bat 'dotnet restore'
 
     stage 'Build'
-        bat "dotnet build -c Release \"APIMATICCalculator.sln\""
+        bat "dotnet build -c Release"
         stage 'Test'
-        bat "dotnet test -v detailed -c Release APIMATICCalculator.Tests\\bin\\Release\\netcoreapp3.0\\APIMATICCalculator.Tests.dll"            
-     }
+        bat "dotnet test -v detailed -c Release          
+}
