@@ -6,5 +6,5 @@ node {
     stage 'Build'
         bat "dotnet build -c Release"
     stage 'Test'
-        bat "dotnet test -v detailed -c Release
+        bat "dotnet test -v detailed -c Release"
         }
